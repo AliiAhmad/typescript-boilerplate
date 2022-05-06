@@ -4,9 +4,11 @@
   "description": "A bilerplate code  setup enforcing development style",
   "main": "index.js",
   "scripts": {
-    "build"   : "tsc",
-    "lint"    : "eslint src/**/*.ts",
-    "format"  : "eslint src/**/*.ts --fix"
+    "build": "tsc",
+    "lint:check": "eslint src/**/*.ts",
+    "link:fix": "eslint src/**/*.ts --fix",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "repository": {
     "type": "git",

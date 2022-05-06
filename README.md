@@ -1,8 +1,10 @@
 # Node Typescript Boilerplate Project
-A bilerplate code  setup enforcing development style
+
+A bilerplate code setup enforcing development style
 
 ## Technologies utilized
-- Node 
+
+- Node
 - Typescript
 - ESLint
 - Prettier
