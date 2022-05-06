@@ -120,6 +120,17 @@ To configure Prettier create `.prettierrc` to the root of the project and add ru
 
 **For more detailed configuration of `.prettierrc` refer to [Prettier Documentation](https://prettier.io/docs/en/configuration.html)**
 
+Adding the following line to `package.json`
+
+```json
+{
+  "scripts": {
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
+  }
+}
+```
+
 ### Husky
 
 Husky is used for commit hooks.
@@ -132,3 +143,10 @@ npx husky-init && yarn
 ```
 
 Edit the pre-commit file to manage the commit scripts
+
+Sample:
+
+```shell
+npm run format:check
+npm run lint:check
+```

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "lint:check": "eslint src/**/*.ts",
-    "link:fix": "eslint src/**/*.ts --fix",
+    "lint:fix": "eslint src/**/*.ts --fix",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "prepare": "husky install"
