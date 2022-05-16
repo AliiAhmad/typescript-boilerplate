@@ -22,6 +22,20 @@ We initalize a barebone node project with only package.json file
 yarn init -y
 ```
 
+Create gitignore
+
+```shell
+touch .gitignore
+```
+
+Add the following gitignore
+
+```
+node_modules
+yarn.lock
+dist
+```
+
 Add entry point file to folder
 
 ```shell
@@ -121,6 +135,10 @@ yarn add prettier --dev
 
 To configure Prettier create `.prettierrc` to the root of the project and add rules to it.
 
+```shell
+touch .prettierrc
+```
+
 **Sample Content**
 
 ```json
@@ -162,7 +180,11 @@ yarn add husky --dev
 Add the following script to the `package.json`
 
 ```json
-"prepare":"husky install"
+{
+  "scripts": {
+    "prepare": "husky install"
+  }
+}
 ```
 
 Run script to prepare husky
