@@ -21,7 +21,9 @@ We initalize a barebone node project with only package.json file
 ```shell
 yarn init -y
 ```
+
 Add entry point file to folder
+
 ```shell
 mkdir src
 touch src/index.ts
@@ -43,13 +45,15 @@ tsc --init
 
 This will create a `tsconfig.json` file under the root of the node project.
 
-Add the following to the `tsconfig.json` to include and exclude desired  
+Add the following to the `tsconfig.json` to include and exclude desired
+
 ```json
 {
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
 ```
+
 **For more detailed configuration of `tsconfig.json` refer to [ESLint Documentation](https://eslint.org/docs/user-guide/getting-started)**
 
 Adding the following line to `package.json`
@@ -138,8 +142,8 @@ Adding the following line to `package.json`
 ```json
 {
   "scripts": {
-    "format:check": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "pretty:check": "prettier --check .",
+    "pretty:fix": "prettier --write ."
   }
 }
 ```
@@ -153,7 +157,18 @@ Install Husky to dev dependencies:
 
 ```shell
 yarn add husky --dev
+```
 
+Add the following script to the `package.json`
+
+```json
+"prepare":"husky install"
+```
+
+Run script to prepare husky
+
+```shell
+yarn run prepare
 ```
 
 Execute the following command to execute the pre-commit file to manage the commit scripts
