@@ -19,7 +19,12 @@ Steps to recreate this environment
 We initalize a barebone node project with only package.json file
 
 ```shell
-npm init --y
+yarn init -y
+```
+Add entry point file to folder
+```shell
+mkdir src
+touch src/index.ts
 ```
 
 ### Typescript
@@ -36,8 +41,15 @@ After adding the dev dependency, initalize the Typescript configuration file
 tsc --init
 ```
 
-This will create a `tsconfig.json` file under the root of the node project. Edit the file as per requirements.
+This will create a `tsconfig.json` file under the root of the node project.
 
+Add the following to the `tsconfig.json` to include and exclude desired  
+```json
+{
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
 **For more detailed configuration of `tsconfig.json` refer to [ESLint Documentation](https://eslint.org/docs/user-guide/getting-started)**
 
 Adding the following line to `package.json`
@@ -53,14 +65,15 @@ Adding the following line to `package.json`
 To build, run the following in shell:
 
 ```shell
-yarn build
+yarn run build
 ```
 
 ### ESLint
 
-To set-up ESLint execute the following command and follow through:
+To set-up ESLint execute the following commands and follow through:
 
 ```shell
+yarn add eslint --dev
 yarn create @eslint/config
 ```
 
@@ -77,7 +90,7 @@ Add the folowing script to `package.json` for ESLint
 {
   "scripts": {
     "lint:check": "eslint src/**/*.ts",
-    "link:fix": "eslint src/**/*.ts --fix"
+    "lint:fix": "eslint src/**/*.ts --fix"
   }
 }
 ```
@@ -85,13 +98,13 @@ Add the folowing script to `package.json` for ESLint
 To check, run the following in shell:
 
 ```shell
-yarn lint:check
+yarn run lint:check
 ```
 
 To format the code to comply with linting rules, run the following in shell:
 
 ```
-yarn lint:fix
+yarn run lint:fix
 ```
 
 ## Prettier
@@ -126,7 +139,7 @@ Adding the following line to `package.json`
 {
   "scripts": {
     "format:check": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:fix": "prettier --write ."
   }
 }
 ```
@@ -136,17 +149,21 @@ Adding the following line to `package.json`
 Husky is used for commit hooks.
 Here we have set it up to Lint and Pretty check before commit
 
-Install and Initialize Husky by following command:
+Install Husky to dev dependencies:
 
 ```shell
-npx husky-init && yarn
+yarn add husky --dev
+
 ```
 
-Edit the pre-commit file to manage the commit scripts
+Execute the following command to execute the pre-commit file to manage the commit scripts
+
+```shell
+yarn husky add .husky/pre-commit "<SCRIPT TO EXECUTE>"
+```
 
 Sample:
 
 ```shell
-npm run format:check
-npm run lint:check
+yarn husky add .husky/pre-commit "yarn run lint:check"
 ```
